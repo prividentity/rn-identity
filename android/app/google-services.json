@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "121222806208",
+    "project_id": "passkey-6d3ff",
+    "storage_bucket": "passkey-6d3ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:121222806208:android:7091048be8c43f3fe7cb25",
+        "android_client_info": {
+          "package_name": "com.nativepasskey"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYm9nz9WC4qa1Rtme6NU5pwm_Nq5TbwfE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
