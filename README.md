@@ -8,7 +8,7 @@ In the React Native app, we open a web link within a web view. The web link serv
 * **Predict:**
    * The predict function is employed to authenticate a user using predict1FA. The function returns a UUID, which is subsequently used to verify the presence of a passkey for the user. If a passkey exists, the user is authenticated; otherwise, the authentication process fails.
 
-For generating passkey, we are using the `generatePasskey` function defined [here](https://github.com/prividentity/rn-identity/blob/main/App.tsx#L68). For authenticating passkey, we are using the `authenticatePasskey` function defined [here](https://github.com/prividentity/rn-identity/blob/main/App.tsx#L112).
+For generating passkey, we are using the `generatePasskey` function defined [here](https://github.com/prividentity/rn-identity/blob/main/App.tsx#L106). For authenticating passkey, we are using the `authenticatePasskey` function defined [here](https://github.com/prividentity/rn-identity/blob/main/App.tsx#L140).
 
 ## React Native Passkey Package
 
