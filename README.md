@@ -1,4 +1,25 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# React Native Passkey Usage
+
+In the React Native app, we open a web link within a web view. The web link serves two functions:
+
+* **Enroll:**
+   * Enrolling the user provides a UUID, which is utilized to generate the passkey. This passkey is then stored on the user's device.
+
+* **Predict:**
+   * The predict function is employed to authenticate a user using predict1FA. The function returns a UUID, which is subsequently used to verify the presence of a passkey for the user. If a passkey exists, the user is authenticated; otherwise, the authentication process fails.
+
+For generating passkey, we are using the `generatePasskey` function defined [here](https://github.com/prividentity/rn-identity/blob/main/App.tsx#L68). For authenticating passkey, we are using the `authenticatePasskey` function defined [here](https://github.com/prividentity/rn-identity/blob/main/App.tsx#L112).
+
+## React Native Passkey Package
+
+We are using the [react-native-passkey](https://github.com/f-23/react-native-passkey) package in React Native. We have already set up a WebAuthn server. The only thing you need to do is associate the domain with the iOS and Android applications. To do this, you need to place a JSON file on your web server. Follow these instructions:
+
+* **iOS:** [Supporting Associated Domains](https://developer.apple.com/documentation/xcode/supporting-associated-domains)
+* **Android:** [Add Support for Passkeys](https://developer.android.com/training/sign-in/passkeys#add-support-dal)
+
+## Reference Repository Code
+
+Check out the code in the [rn-identity](https://github.com/prividentity/rn-identity) repository.
 
 # Getting Started
 
