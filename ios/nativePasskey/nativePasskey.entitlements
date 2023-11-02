@@ -5,6 +5,8 @@
 	<key>com.apple.developer.associated-domains</key>
 	<array>
 		<string>webcredentials:static.privateid.co</string>
+		<string>webcredentials:keymouseit.com</string>
+		<string>applinks:keymouseit.com</string>
 	</array>
 </dict>
 </plist>

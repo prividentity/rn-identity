@@ -25,6 +25,7 @@ import {
   verifyRegistration,
 } from './services';
 import {getQueryParams} from './utils';
+import {styles} from './style';
 
 function App(): JSX.Element {
   const [uuid, setUuid] = useState('');
@@ -183,51 +184,25 @@ function App(): JSX.Element {
     }
   };
 
+  // eslint-disable-next-line react/no-unstable-nested-components
   const Error = () => (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
+    <View style={styles.flexContainer}>
       <MaterialIcons name="dangerous" size={70} color="red" />
-      <Text
-        style={{
-          textAlign: 'center',
-          fontSize: 25,
-          color: 'red',
-        }}>
-        {error}
-      </Text>
+      <Text style={styles.errorMessage}>{error}</Text>
     </View>
   );
 
+  // eslint-disable-next-line react/no-unstable-nested-components
   const Success = () => (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
+    <View style={styles.flexContainer}>
       <AntDesign name="checkcircleo" size={70} color="green" />
-      <Text
-        style={{
-          textAlign: 'center',
-          fontSize: 25,
-          color: 'green',
-        }}>
-        {message}
-      </Text>
+      <Text style={styles.successMessage}>{message}</Text>
     </View>
   );
 
+  // eslint-disable-next-line react/no-unstable-nested-components
   const Loading = () => (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
+    <View style={styles.flexContainer}>
       <Text
         style={{
           textAlign: 'center',
@@ -239,6 +214,7 @@ function App(): JSX.Element {
     </View>
   );
 
+  // eslint-disable-next-line react/no-unstable-nested-components
   const RenderState = () => {
     if (success) {
       return <Success />;
@@ -250,12 +226,7 @@ function App(): JSX.Element {
       return <Error />;
     }
     return (
-      <View
-        style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
+      <View style={styles.flexContainer}>
         <ActivityIndicator size="large" />
       </View>
     );
