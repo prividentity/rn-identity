@@ -18,6 +18,7 @@ import {Passkey} from 'react-native-passkey';
 import {WebView} from 'react-native-webview';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {encode} from 'base-64';
 import {
   generateAuthenticationOptions,
   generateRegistrationOptions,
@@ -106,13 +107,26 @@ function App(): JSX.Element {
 
   const generatePasskey = async (userUUID: string) => {
     let attResp;
+    let option;
     try {
       const opts = await generateRegistrationOptions(userUUID);
       console.log(opts, 'opts');
       setMessage('Generating passkey......');
       setLoader(true);
-      attResp = await Passkey.register(opts);
+      if (Platform.OS === 'ios') {
+        option = {...opts, challenge: encode(opts?.challenge)};
+      } else {
+        option = opts;
+      }
+      attResp = await Passkey.register(option);
       setLoader(false);
+      if (Platform.OS === 'ios') {
+        attResp = {
+          ...attResp,
+          type: 'public-key',
+          ios: true,
+        };
+      }
       console.log(attResp, 'attResp');
       const verificationJSON = await verifyRegistration(attResp, userUUID);
       if (verificationJSON?.verified) {
@@ -153,7 +167,11 @@ function App(): JSX.Element {
         }
         setMessage('Authenticating passkey......');
         setLoader(true);
-        asseResp = await Passkey.authenticate({...opts, allowCredentials: []});
+        asseResp = await Passkey.authenticate({
+          ...opts,
+          allowCredentials: [],
+          challenge: encode(opts?.challenge),
+        });
         setLoader(false);
         console.log(asseResp, 'Authenticating attResp');
         // eslint-disable-next-line no-catch-shadow
