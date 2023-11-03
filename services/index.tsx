@@ -1,5 +1,4 @@
 const webAuthnAPIUrl = 'https://simplewebauthn.privateid.com';
-const apiKey = '3c9e10d3650c05ab5517';
 const origin = 'https://static.privateid.co';
 
 export const generateRegistrationOptions = async (uuid: string) => {
@@ -10,7 +9,6 @@ export const generateRegistrationOptions = async (uuid: string) => {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
         headers: {
           'Content-Type': 'application/json',
-          x_api_key: apiKey,
           origin: origin,
         },
         body: JSON.stringify({uuid}), // body data type must match "Content-Type" header
@@ -29,7 +27,6 @@ export const verifyRegistration = async (attResp: any, uuid: string) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          x_api_key: apiKey,
           origin: origin,
         },
         body: JSON.stringify({data: attResp, uuid}),
@@ -49,7 +46,6 @@ export const generateAuthenticationOptions = async (uuid: string) => {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
         headers: {
           'Content-Type': 'application/json',
-          x_api_key: apiKey,
           origin: origin,
         },
         body: JSON.stringify({uuid}), // body data type must match "Content-Type" header
@@ -72,7 +68,6 @@ export const verifyAuthentication = async (
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          x_api_key: apiKey,
           origin: origin,
         },
         body: JSON.stringify({

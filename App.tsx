@@ -261,37 +261,43 @@ function App(): JSX.Element {
     );
   };
 
-  if (uuid) {
-    return (
-      <SafeAreaView style={{flex: 1}}>
-        <RenderState />
-        <TouchableOpacity
-          style={{flex: 0.2, alignItems: 'center'}}
-          onPress={setInitialState}>
-          <Text style={{textDecorationLine: 'underline', fontSize: 18}}>
-            Back to Main Page
-          </Text>
-        </TouchableOpacity>
-      </SafeAreaView>
-    );
-  }
+  // if (uuid) {
+  //   return (
+  //     <SafeAreaView style={{flex: 1}}>
+  //
+  //     </SafeAreaView>
+  //   );
+  // }
 
   return (
-    <SafeAreaView style={{height: '100%'}}>
-      <WebView
-        source={{
-          uri: 'https://charlie.devel.privateid.co/wasm-native',
-        }}
-        style={{marginTop: 20, height: 400}}
-        onError={(e: any) => console.log(e, 'e69')}
-        onHttpError={e => console.log(e, 'error')}
-        // javaScriptEnabled
-        originWhitelist={['*']}
-        allowsInlineMediaPlayback={true}
-        onNavigationStateChange={e => onNavigationChange(e)}
-        mediaPlaybackRequiresUserAction={false}
-        webviewDebuggingEnabled={true}
-      />
+    <SafeAreaView style={{flex: 1}}>
+      {uuid ? (
+        <>
+          <RenderState />
+          <TouchableOpacity
+            style={{flex: 0.2, alignItems: 'center'}}
+            onPress={setInitialState}>
+            <Text style={{textDecorationLine: 'underline', fontSize: 18}}>
+              Back to Main Page
+            </Text>
+          </TouchableOpacity>
+        </>
+      ) : (
+        <WebView
+          source={{
+            uri: 'https://charlie.devel.privateid.co/wasm-native',
+          }}
+          style={{marginTop: 20, height: 400}}
+          // javaScriptEnabled
+          originWhitelist={['*']}
+          allowsInlineMediaPlayback={true}
+          onNavigationStateChange={onNavigationChange}
+          mediaPlaybackRequiresUserAction={false}
+          cacheEnabled={true}
+          // cacheMode={'LOAD_CACHE_ELSE_NETWORK'}
+          webviewDebuggingEnabled={true}
+        />
+      )}
     </SafeAreaView>
   );
 }
